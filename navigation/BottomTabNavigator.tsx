@@ -1,4 +1,13 @@
-import { Ionicons } from '@expo/vector-icons';
+import {
+  Ionicons,
+  Entypo,
+  EvilIcons,
+  Zocial,
+  Octicons,
+  MaterialIcons,
+  MaterialCommunityIcons,
+  FontAwesome5
+} from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
@@ -19,17 +28,40 @@ export default function BottomTabNavigator() {
       initialRouteName="TabOne"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="TabOne"
+        name="Home"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <Entypo name="home" size={30} style={{ marginBottom: -3 }} color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="Search"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <EvilIcons name="search" size={30} style={{ marginBottom: -3 }} color={color} />,
+        }}
+      />
+       <BottomTab.Screen
+        name="Your Library"
+        component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) =><MaterialIcons name="my-library-music" size={24} style={{ marginBottom: -3 }} color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Premium"
+        component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <Octicons name="file-submodule" size={24} style={{ marginBottom: -3 }}  color={color} />,
+        }}
+      />
+
+      
+       <BottomTab.Screen
+        name="Community"
+        component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <Zocial name="creativecommons" size={24}  style={{ marginBottom: -3 }}  color={color} />,
         }}
       />
     </BottomTab.Navigator>
