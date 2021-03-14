@@ -14,8 +14,11 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
+import HomeScreen from '../screens/HomeOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
+import CommunityScreen from '../screens/CommunityScreen';
+import AlbumScreen from '../screens/AlbumScreen';
+
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -28,28 +31,28 @@ export default function BottomTabNavigator() {
       initialRouteName="TabOne"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="Home"
+        name="TabHome"
         component={TabOneNavigator}
         options={{
           tabBarIcon: ({ color }) => <Entypo name="home" size={30} style={{ marginBottom: -3 }} color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="Search"
+        name="TabSearch"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <EvilIcons name="search" size={30} style={{ marginBottom: -3 }} color={color} />,
         }}
       />
        <BottomTab.Screen
-        name="Your Library"
+        name="TabLibrary"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) =><MaterialIcons name="my-library-music" size={24} style={{ marginBottom: -3 }} color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="Premium"
+        name="TabPremium"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <Octicons name="file-submodule" size={24} style={{ marginBottom: -3 }}  color={color} />,
@@ -58,8 +61,8 @@ export default function BottomTabNavigator() {
 
       
        <BottomTab.Screen
-        name="Community"
-        component={TabTwoNavigator}
+        name="TabCommunity"
+        component={TabCommunityNavigator}
         options={{
           tabBarIcon: ({ color }) => <Zocial name="creativecommons" size={24}  style={{ marginBottom: -3 }}  color={color} />,
         }}
@@ -68,11 +71,7 @@ export default function BottomTabNavigator() {
   );
 }
 
-// You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
-function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
-}
+
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
@@ -81,11 +80,19 @@ const TabOneStack = createStackNavigator<TabOneParamList>();
 function TabOneNavigator() {
   return (
     <TabOneStack.Navigator>
+
       <TabOneStack.Screen
         name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+        component={HomeScreen}
+        options={{ headerTitle: '(CIX) Creative International Exposure' }}
       />
+
+      <TabOneStack.Screen
+        name="AlbumScreen"
+        component={AlbumScreen}
+        options={{ headerTitle: 'Album Screen' }}
+      />
+
     </TabOneStack.Navigator>
   );
 }
@@ -98,8 +105,23 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        options={{ headerTitle: 'Search Tab' }}
       />
     </TabTwoStack.Navigator>
+  );
+}
+
+
+const CommunityTabStack = createStackNavigator<TabTwoParamList>();
+
+function TabCommunityNavigator() {
+  return (
+    <CommunityTabStack.Navigator>
+      <CommunityTabStack.Screen
+        name="TabTwoScreen"
+        component={CommunityScreen}
+        options={{ headerTitle: 'The Community' }}
+      />
+    </CommunityTabStack.Navigator>
   );
 }
