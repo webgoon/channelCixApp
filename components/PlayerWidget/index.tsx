@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { Text, Image,  View, TouchableOpacity } from 'react-native';
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
-
+import MarqueeText from 'react-native-marquee';
 import styles from './styles';
 
 import { Audio } from "expo-av";
@@ -15,7 +15,8 @@ import {Sound} from "expo-av/build/Audio/Sound"
       id: '4',
       uri: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3',
       imageUri: 'https://media.redbullmusicacademy.com/assets/Black_Milk_by_Maxwell_Schiano-2.132b8df9.jpg',
-      title: 'Testing Mp3 Yo!',
+     
+     title: 'This should be a scrolling marquee testing which is going to be the artist song title....',
       artist: 'Black Milk',
   }
 
@@ -23,15 +24,20 @@ const PlayerWidget = () => {
 
   const [sound, setSound] = useState<Sound|null>(null);  // Defines sound used in PressPlay Function
   const [isPlaying, setIsPlaying] = useState<boolean>(true);  // Sets the state if song is playing or not
+  const [duration, setDuration] = useState<number|null>(null);
+  const [position, setPosition] = useState<number|null>(null);
 
 
 
 
   const onPlaybackStatusUpdate = (status) => {
+    // Will display the song in the console during playback
     console.log('-- OnPlayBackStatusUpdate --');
     console.log(status);
 
     setIsPlaying(status.isPlaying);
+    setDuration(status.durationMillis);
+    setPosition(status.positionMillis);
   }
 
 
@@ -82,8 +88,29 @@ const PlayerWidget = () => {
   
 
 
+  // Get the progress on the song during playback
+  const getProgress = () => {
+    if (sound === null || duration === null || position === null) {
+      // displays no sound and no position
+      return 0;
+    }
+
+    return (position / duration) * 100;
+  }
+
+  if (!song) {
+    return null;
+  }
+
+
+
   return (
     <View style={styles.container}>
+      {/* Status Indicator   {getProgress()}   */}
+      <View style={[styles.indicatorPwStrip, { width: `${getProgress()}%`}]} />
+      <View style={styles.row}>
+
+     
       {/* Image Cover */}
       <Image style={styles.image} source={{ uri: song.imageUri }}  />
 
@@ -94,7 +121,20 @@ const PlayerWidget = () => {
                   {/* Artist */}
                   <Text style={styles.artist}>{song.artist}</Text>
                   {/* Title */}
-                  <Text style={styles.title}>{song.title}</Text>          
+                  <MarqueeText
+                    style={styles.title}
+                    marqueeDelay={5}
+                    duration={20000}
+                   
+                   
+                    marqueeOnStart={true}
+                    onMarqueeComplete={true}
+                    loop={true}
+                   
+                    marqueeResetDelay={1000}
+                  >
+                   {song.title}
+                  </MarqueeText>
                 </View>
 
 
@@ -106,6 +146,8 @@ const PlayerWidget = () => {
                 </View>
 
        </View>  
+     
+     </View>
     </View>
   )
 }

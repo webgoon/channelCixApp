@@ -6,14 +6,22 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 49,
     backgroundColor:  '#131313',
-    flexDirection: 'row',
+    flexDirection: 'column',
     width: '100%',
     borderWidth: 5,
     borderColor: 'black',
     borderBottomColor: 'white',
-    alignItems: 'center',
+    //alignItems: 'center',
     borderBottomWidth: 1,
     paddingBottom: 5,
+  },
+  row: {
+    flexDirection: 'row',
+  },
+  indicatorPwStrip: {
+    height: 5,
+    //width: '100%',
+    backgroundColor: '#bcbcbc',
   },
   image: {
    width:  75,
@@ -23,10 +31,14 @@ const styles = StyleSheet.create({
     
   },
   rightContainer: {
+    position: 'relative',
     flex: 1,
     flexDirection: 'row',
     color: 'white',
     justifyContent: 'space-between',
+    overflow: 'visible',
+    zIndex: -1,
+    
   },
   nameContainer: {
       flexDirection: 'row',
@@ -43,6 +55,7 @@ const styles = StyleSheet.create({
     color: 'white',
     backgroundColor: '#131313',
     height: 60,
+    zIndex: 100,
     
     
     
@@ -55,21 +68,28 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     paddingRight: 10,
   },
-  title: {
-    color: 'white',
-    fontSize: 14,
-    
-    fontStyle: 'italic',
-    justifyContent: 'space-between',
-   
-    
-  },
   artist: {
+    marginRight: 10,
     color: 'white',
     fontSize: 14,
     fontWeight: 'bold',
     justifyContent: 'space-between',
   },
+  title: {
+    color: 'white',
+    
+    fontSize: 14,
+    
+    fontStyle: 'italic',
+    justifyContent: 'space-between',
+    zIndex: -10,
+    width: 150,
+    overflow: 'hidden',
+
+   
+    
+  },
+ 
   text: {
     color: 'green'
     
