@@ -34,17 +34,26 @@ const styles = StyleSheet.create({
       alignItems: 'center',
   },
   iconsContainer: {
-    flex: 1,
+    position: 'relative',
     flexDirection: 'row',
-    marginLeft: -70,
-    color: 'white',
     alignItems: 'center',
     width: 100,
+    justifyContent: 'space-between',
+    padding: 15,
+    color: 'white',
     backgroundColor: '#131313',
     height: 60,
-    justifyContent: 'space-around',
     
     
+    
+  },
+  pwlikeIcon: {
+    marginLeft: -10,
+    marginRight: 10,
+  },
+  pwPlayIcon: {
+    marginLeft: 20,
+    paddingRight: 10,
   },
   title: {
     color: 'white',

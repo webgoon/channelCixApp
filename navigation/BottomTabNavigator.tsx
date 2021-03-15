@@ -31,28 +31,28 @@ export default function BottomTabNavigator() {
       initialRouteName="TabOne"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="TabHome"
+        name="Home"
         component={TabOneNavigator}
         options={{
           tabBarIcon: ({ color }) => <Entypo name="home" size={30} style={{ marginBottom: -3 }} color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabSearch"
+        name="Search"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <EvilIcons name="search" size={30} style={{ marginBottom: -3 }} color={color} />,
         }}
       />
        <BottomTab.Screen
-        name="TabLibrary"
+        name="Library"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) =><MaterialIcons name="my-library-music" size={24} style={{ marginBottom: -3 }} color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabPremium"
+        name="Premium"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <Octicons name="file-submodule" size={24} style={{ marginBottom: -3 }}  color={color} />,
@@ -61,7 +61,7 @@ export default function BottomTabNavigator() {
 
       
        <BottomTab.Screen
-        name="TabCommunity"
+        name="Community"
         component={TabCommunityNavigator}
         options={{
           tabBarIcon: ({ color }) => <Zocial name="creativecommons" size={24}  style={{ marginBottom: -3 }}  color={color} />,

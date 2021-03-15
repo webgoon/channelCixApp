@@ -70,7 +70,7 @@ const PlayerWidget = () => {
     if (!sound) {
       return;
     }
-    
+
     if (isPlaying) {
       await sound.stopAsync();
     } else {
@@ -99,9 +99,9 @@ const PlayerWidget = () => {
 
 
                 <View style={styles.iconsContainer}>
-                  <AntDesign style={{marginRight: 10}} name="heart" size={30} color={"green"} />
+                  <AntDesign style={styles.pwlikeIcon} name="heart" size={20} color={"green"} />
                   <TouchableOpacity onPress={onPlayPausePress}>
-                    <FontAwesome   name={isPlaying ? 'pause' : 'play'} size={30} color={"green"} />
+                    <FontAwesome style={styles.pwPlayIcon}   name={isPlaying ? 'pause' : 'play'} size={20} color={"green"} />
                   </TouchableOpacity>
                 </View>
 
